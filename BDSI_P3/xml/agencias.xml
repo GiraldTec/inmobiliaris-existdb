@@ -4,7 +4,7 @@
 <Inmobiliarias>
     <Inmobiliaria id="pitufo">
         <nombre>Pitufos SA</nombre>
-        <direccion>C: Pepino 9</direccion>
+        <direccion>C\Pepino 9</direccion>
         <provincia>La Coruña</provincia>
         <localidad>Lugo</localidad>
         <codigopostal>00000</codigopostal>
@@ -13,34 +13,49 @@
             <telefono tipo = "movil">6555555</telefono>
             <telefono tipo = "fax">4555555</telefono>
         </telefonos>
-        <email contacto="Mario Conde">pitudosSA@inmo.es</email>
+        <email contacto="María Duque">mariad@pitufossa.es</email>
         <web>www.pitufosSM.es</web>
     </Inmobiliaria>
     
     <Inmobiliaria id="gemelos">
         <nombre>Gemelos Malvados SA</nombre>
-        <direccion>C:\Luisiano 10</direccion>
+        <direccion>C\Luisiano 10</direccion>
         <provincia>Madrid</provincia>
         <localidad>Leganes</localidad>
-        <codigopostal>11111</codigopostal>
+        <codigopostal>33333</codigopostal>
         <telefonos>
             <telefono tipo = "fijo">5111111</telefono>
             <telefono tipo = "fax">4111111</telefono>
         </telefonos>
-        <email contacto="Rigoberto Flavio">gemelos@inmo.es</email>
+        <email contacto="Rigoberto Flavio">riflav@gemelosm.es</email>
         <web>www.GemelosMalvados.es</web>
     </Inmobiliaria>
     
     <Inmobiliaria id="infernalia">
         <nombre>Infernalia</nombre>
-        <direccion>C:\Stigia</direccion>
+        <direccion>C\Stigia</direccion>
         <provincia>Barcelona</provincia>
         <localidad>Barna</localidad>
         <codigopostal>22222</codigopostal>
         <telefonos>
             <telefono tipo = "movil">6000666</telefono>
         </telefonos>
-        <email contacto="Lucifer Sanchez">infernalia@inmo.es</email>
+        <email contacto="Lucifer Sanchez">lucisan@infernalia.es</email>
+        <web>www.infernalia.es</web>
+    </Inmobiliaria>
+    
+    <Inmobiliaria id="inmocasa">
+        <nombre>Inmocasa</nombre>
+        <direccion>C\Mayor</direccion>
+        <provincia>Sevilla</provincia>
+        <localidad>Bormujos</localidad>
+        <codigopostal>11111</codigopostal>
+        <telefonos>
+            <telefono tipo = "movil">6000666</telefono>
+            <telefono tipo = "fax">7000666</telefono>
+            <telefono tipo = "fax">7000665</telefono>
+        </telefonos>
+        <email contacto="Paco Raban">pacor@inmo.es</email>
         <web>www.infernalia.es</web>
     </Inmobiliaria>
 </Inmobiliarias>
