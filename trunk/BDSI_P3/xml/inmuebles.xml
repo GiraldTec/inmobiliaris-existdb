@@ -11,14 +11,42 @@
         
         <opcionales>
             <numHabs>2</numHabs>
-            <piscina>No</piscina>
-            <soleado>No</soleado>
             <trastero>Si</trastero>
             <baños>3</baños>
             <jardin>si</jardin>
         </opcionales>
         <fotos>
             <foto>www.wakawaka.es/foto67.jpg</foto>
+        </fotos>
+    </anuncio>
+    
+    <anuncio id="piso_02" agencia="pitufo" operacion="alquiler">
+        <inmueble tipo="piso" estado="nuevo">
+            <metros2>90</metros2>
+           	<provincia>Huesca</provincia>
+           	<localidad>Hortalizada</localidad>
+        </inmueble>
+        
+        <opcionales>
+        	<calefaccion>si</calefaccion>
+            <numHabs>2</numHabs>
+            <baños>1</baños>
+        </opcionales>
+        <fotos>
+            <foto>www.wakawaka.es/foto68.jpg</foto>
+        </fotos>
+    </anuncio>
+    
+    <anuncio id="almacen_01" agencia="gemelos" operacion="alquiler">
+        <inmueble tipo="almacen" estado="buenEstado">
+            <metros2>1000</metros2>
+           	<provincia>Alicante</provincia>
+           	<localidad>Tomatera</localidad>
+        </inmueble>
+        <opcionales>
+        </opcionales>
+        <fotos>
+            <foto>www.wakawaka.es/foto69.jpg</foto>
         </fotos>
     </anuncio>
 </inmuebles>
