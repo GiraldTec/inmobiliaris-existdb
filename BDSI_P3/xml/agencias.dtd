@@ -1,0 +1,17 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT Inmobiliarias (Inmobiliaria)*>
+<!ELEMENT Inmobiliaria (nombre,direccion?,provincia,localidad?,
+                        codigopostal?,telefonos,email,web)>
+
+<!ATTLIST Inmobiliaria  id ID #REQUIRED>
+
+<!ELEMENT nombre (#PCDATA)> 
+<!ELEMENT direccion (#PCDATA)> 
+<!ELEMENT provincia (#PCDATA)> 
+<!ELEMENT localidad (#PCDATA)> 
+<!ELEMENT codigopostal (#PCDATA)> 
+<!ELEMENT telefonos (telefono)*> 
+<!ELEMENT email (#PCDATA)> <!ATTLIST email contacto CDATA #REQUIRED>
+<!ELEMENT web (#PCDATA)> 
+<!ELEMENT telefono (#PCDATA)> <!ATTLIST telefono  tipo (fijo|movil|fax) #REQUIRED>
