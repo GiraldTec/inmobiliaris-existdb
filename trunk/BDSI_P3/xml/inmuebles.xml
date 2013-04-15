@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE inmuebles SYSTEM "C:\hlocal\trang\inmuebles.dtd">
+
+<inmuebles>
+    <anuncio id="piso_01" agencia="infernalia" operacion="venta">
+        <inmueble tipo="piso" estado="nuevo">
+            <metros2>120</metros2>
+           	<provincia>Asturias</provincia>
+           	<localidad>Pepinosa</localidad>
+        </inmueble>
+        
+        <opcionales>
+            <numHabs>2</numHabs>
+            <piscina>No</piscina>
+            <soleado>No</soleado>
+            <trastero>Si</trastero>
+            <baños>3</baños>
+            <jardin>si</jardin>
+        </opcionales>
+        <fotos>
+            <foto>www.wakawaka.es/foto67.jpg</foto>
+        </fotos>
+    </anuncio>
+</inmuebles>

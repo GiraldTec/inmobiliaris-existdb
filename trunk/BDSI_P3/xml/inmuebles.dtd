@@ -1,0 +1,22 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT inmuebles (anuncio)*>
+<!ELEMENT anuncio (inmueble,opcionales,fotos)>
+<!ATTLIST anuncio id ID #REQUIRED agencia CDATA #REQUIRED operacion (venta|alquiler) #REQUIRED>
+<!ELEMENT inmueble (metros2,provincia,localidad)>
+<!ATTLIST inmueble tipo (piso|casa|solar|terreno|local|oficina|almacen|parking|trastero) #REQUIRED
+					estado (nuevo|buenEstado|reformado|reformar) #REQUIRED>
+<!ELEMENT opcionales (vecinosRuidosos?,numHabs?,piscina?,soleado?,trastero?,baños?,jardin?,calefaccion?)>
+<!ELEMENT fotos (foto)*>
+<!ELEMENT metros2 (#PCDATA)>
+<!ELEMENT provincia (#PCDATA)>
+<!ELEMENT localidad (#PCDATA)>
+<!ELEMENT vecinosRuidosos (#PCDATA)>
+<!ELEMENT calefaccion (#PCDATA)>
+<!ELEMENT numHabs (#PCDATA)>
+<!ELEMENT piscina (#PCDATA)>
+<!ELEMENT soleado (#PCDATA)>
+<!ELEMENT trastero (#PCDATA)>
+<!ELEMENT baños (#PCDATA)>
+<!ELEMENT jardin (#PCDATA)>
+<!ELEMENT foto (#PCDATA)>
