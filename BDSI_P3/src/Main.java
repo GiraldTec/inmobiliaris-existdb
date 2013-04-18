@@ -5,6 +5,7 @@
  */
 
 import java.io.File;
+import java.util.ArrayList;
 
 import org.xmldb.api.*;
 import org.xmldb.api.base.*;
@@ -22,14 +23,14 @@ public class Main {
 	public static int main(String[] args) {
 		if(args.length!=4)
 		{
-			System.out.println("Modo de uso:");
-			System.out.println("(coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
+			System.err.println("Modo de uso:");
+			System.err.println("(coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
 			return -1;
 		}
 		String coleccion = args[0];
 		String directorioXML = args[1];
 		String documentoQuery = args[2];
-		String numeroQuery = args[3];
+		int numeroQuery = Integer.valueOf(args[3]);
 		
 		//Eliminar "/db" si es especificado en la entrada
 		if (coleccion.startsWith("/db")) {
@@ -66,6 +67,9 @@ public class Main {
 			
 			enviarXML(col, directorioXML);
 			
+			String consulta = cargarConsultas(documentoQuery,numeroQuery);
+			realizarConsulta(service,consulta);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -99,6 +103,27 @@ public class Main {
 			//System.out.println("Almacenando el archivo " + document.getId() + "...");
 			col.storeResource(document);
 			//System.out.println("Almacenado correctamente");
+		}
+	}
+	
+	private static String cargarConsultas(String arch, int num)
+	{
+		//TODO realizar segun sea el archivo de querys
+		return null;
+	}
+	
+	private static void realizarConsulta(XPathQueryService service, String consulta) throws Exception
+	{
+		//---------------------------------------------------
+		// Consulta a lanzar (el documento debe existir ya en la base de datos)
+		// --------------------------------------------------
+		ResourceSet result =
+		service.query(consulta);
+		ResourceIterator i = result.getIterator();
+		//Se procesa el resultado.
+		while (i.hasMoreResources()) {
+		Resource r = i.nextResource();
+		System.out.println((String) r.getContent());
 		}
 	}
 }
