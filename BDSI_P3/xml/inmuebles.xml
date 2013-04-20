@@ -49,4 +49,19 @@
             <foto>www.wakawaka.es/foto69.jpg</foto>
         </fotos>
     </anuncio>
+    <anuncio id="almacen_02" agencia="gemelos" operacion="alquiler">
+        <inmueble tipo="almacen" estado="reformar">
+            <metros2>600</metros2>
+           	<provincia>Segovia</provincia>
+           	<localidad>Burgohondo</localidad>
+        </inmueble>
+        <opcionales>
+            <calefaccion>si</calefaccion>
+            <baños>1</baños>
+        </opcionales>
+        <fotos>
+            <foto>www.wakawaka.es/foto70.jpg</foto>
+        </fotos>
+    </anuncio>
+    
 </inmuebles>
