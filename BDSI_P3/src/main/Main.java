@@ -11,7 +11,7 @@ import org.xmldb.api.base.*;
 import org.xmldb.api.modules.*;
 
 
-public class MainClass {
+public class Main {
 
 	private static final String PASSWORD = "karurosu"; //TODO user y pass
 	private static final String USER = "admin";
