@@ -84,8 +84,7 @@ public class Main {
 			XPathQueryService service =	(XPathQueryService) col.getService("XPathQueryService", "1.0");
 			
 			cargarXMLs(col, directorioXML);
-		/*	
-			cargarXQuery(col,documentoQuery);
+			
 		
 			String miQuery = obtenerQuery(numeroQuery,documentoQuery);
 			
@@ -94,7 +93,7 @@ public class Main {
 			while (i.hasMoreResources()) {
 				Resource r = i.nextResource();
 				System.out.println((String) r.getContent());
-			}*/
+			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -109,11 +108,6 @@ public class Main {
 	private static String obtenerQuery(String numeroQuery2,	String documentoQuery2) {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	private static void cargarXQuery(Collection col, String documentoQuery2) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	private static void cargarXMLs(Collection col, String directorioXML) {		
