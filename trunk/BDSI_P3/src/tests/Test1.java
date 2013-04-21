@@ -4,6 +4,8 @@ import org.xmldb.api.*;
 import org.xmldb.api.base.*;
 import org.xmldb.api.modules.*;
 import java.io.*;
+import java.net.URI;
+
 import org.exist.util.*;
 import org.exist.xmldb.*;
 
@@ -32,11 +34,11 @@ public class Test1 {
 	String urlBD1 = "xmldb:exist://localhost:8080/exist/xmlrpc/db" + collection;
 	Collection col = DatabaseManager.getCollection( urlBD1, "admin", "karurosu");
 	
-	
+	// Si la coleccion especificada como primer argumento no existe,
+	// entonces se crea
 	if (col == null) {
 		String urlBD2 = "xmldb:exist://localhost:8080/exist/xmlrpc/db";
-		Collection root = DatabaseManager.getCollection( urlBD2 ,
-		"admin", "karurosu");
+		Collection root = DatabaseManager.getCollection(urlBD2,"admin","karurosu");
 		CollectionManagementService mgtService =
 		(CollectionManagementService) root.getService("CollectionManagementService",
 		"1.0");
@@ -45,18 +47,16 @@ public class Test1 {
 		XPathQueryService service =	(XPathQueryService) col.getService("XPathQueryService", "1.0");
 	}
 	
-	// Si la coleccion especificada como primer argumento no existe,
-	// entonces se crea
-
+	
 	//---------------------------------------------------
 	// Se crea un recurso XML para almacenar el documento
 	// --------------------------------------------------
-	XMLResource document = (XMLResource) col.createResource(null, "XMLResource");
 	File f = new File(file);
+	XMLResource document = (XMLResource) col.createResource(f.getName(), "XMLResource");
+	
 	if (!f.canRead()) {
 		System.err.println("No es posible leer el archivo " + file);
 	}
-	
 	System.out.println(f.toString());
 	document.setContent(f);
 	System.out.println("Almacenando el archivo " + document.getId() + "...");
