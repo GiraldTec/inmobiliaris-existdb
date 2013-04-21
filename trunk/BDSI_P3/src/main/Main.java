@@ -107,15 +107,17 @@ public class Main {
 		File arch = new File(documentoQuery);
 		FileReader fr;
 		BufferedReader bufr;
-		String retorno = "";
+		String linea = "";
 		try {
 			fr = new FileReader(arch);
 			bufr = new BufferedReader(fr);
-			for(int i=0;i<numeroQuery;i++)
-			{
-				retorno = bufr.readLine();
+			Integer contador = 0;
+			while((contador<numeroQuery)&&(linea=bufr.readLine())!=null){
+				System.out.println(linea);
+				contador++;
 			}
-			return retorno;
+			fr.close();
+			return linea;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "";
@@ -141,7 +143,6 @@ public class Main {
 					//System.out.println("Almacenado correctamente");
 				}
 			}
-			System.out.println("putapita"); //TODO borrar esto xD
 		}catch(Exception e){
 			
 		}
