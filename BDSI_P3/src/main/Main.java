@@ -24,7 +24,7 @@ public class Main {
 	private static String numeroQuery;
 	
 	@SuppressWarnings({ "unused", "rawtypes" })
-	public static int main(String[] args) {
+	public static void main(String[] args) {
 		
 		switch (args.length){
 			case 4:{
@@ -48,7 +48,8 @@ public class Main {
 				System.out.println("('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
 				System.out.println("Modo de uso en casa");
 				System.out.println("(usurio)(contraseña)('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
-				return -1;}
+				//return -1;
+				}
 		}
 		
 		//Eliminar "/db" si es especificado en la entrada
@@ -71,7 +72,7 @@ public class Main {
 			DatabaseManager.registerDatabase(database);
 			
 			// Se intenta acceder a la coleccion especificada como primer argumento
-			col = DatabaseManager.getCollection(urlBD, USER, PASSWORD);
+			col = DatabaseManager.getCollection(urlBD1, USER, PASSWORD);
 			if (col == null) {
 				Collection root = DatabaseManager.getCollection(  DIRECCION ,USER, PASSWORD);
 				CollectionManagementService mgtService =
@@ -83,7 +84,7 @@ public class Main {
 			XPathQueryService service =	(XPathQueryService) col.getService("XPathQueryService", "1.0");
 			
 			cargarXMLs(col, directorioXML);
-			
+		/*	
 			cargarXQuery(col,documentoQuery);
 		
 			String miQuery = obtenerQuery(numeroQuery,documentoQuery);
@@ -93,7 +94,7 @@ public class Main {
 			while (i.hasMoreResources()) {
 				Resource r = i.nextResource();
 				System.out.println((String) r.getContent());
-			}
+			}*/
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -101,7 +102,7 @@ public class Main {
 		}
 		
 
-		return 0;
+		//return 0;
 
 	}
 
@@ -115,49 +116,31 @@ public class Main {
 		
 	}
 
-	private static void cargarXMLs(Collection col, String directorioXML2) {
-		// TODO Auto-generated method stub
-		
-	}
-		
-/*
+	private static void cargarXMLs(Collection col, String directorioXML) {		
+		try{
+			File dir = new File(directorioXML);
+			if(!dir.isDirectory())
+				throw new Exception("No es un directorio " + directorioXML);
+			for(File fichero:dir.listFiles())
+			{
+				if (fichero.getName().endsWith(".xml")){
+					if (!fichero.canRead())
+						throw new Exception("No es posible leer el archivo " + fichero.getName());
+					XMLResource xmlRes = (XMLResource) col.createResource(fichero.getName(), "XMLResource");
+					
+					//System.out.println(f.toString());
+					xmlRes.setContent(fichero);
+					//System.out.println("Almacenando el archivo " + document.getId() + "...");
+					col.storeResource(xmlRes);
+					//System.out.println("Almacenado correctamente");
+				}
+			}
+			System.out.println("putapita");
+		}catch(Exception e){
 			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return -1;
 		}
 		
-		
-		
-		
-		
-		
-		return 0;
 	}
-
-	private static void enviarXML(Collection col, String directorio) throws Exception
-	{
-		//---------------------------------------------------
-		// Se crea un recurso XML para almacenar el documento
-		// --------------------------------------------------
-		XMLResource document = (XMLResource) col.createResource(null, "XMLResource");
-		File dir = new File(directorio);
-		if(!dir.isDirectory())
-			throw new Exception("No es un directorio " + directorio);
-		for(File f:dir.listFiles())
-		{
-			if (!f.canRead())
-				throw new Exception("No es posible leer el archivo " + f.getName());
-			
-			//System.out.println(f.toString());
-			document.setContent(f);
-			//System.out.println("Almacenando el archivo " + document.getId() + "...");
-			col.storeResource(document);
-			//System.out.println("Almacenado correctamente");
-		}
-	}
-	
-	*/
+		
 }
 
