@@ -13,23 +13,43 @@ import org.xmldb.api.modules.*;
 
 public class Main {
 
-	private static final String PASSWORD = "karurosu"; //TODO user y pass
-	private static final String USER = "admin";
+	private static String PASSWORD = "XMLFdILABs"; //TODO user y pass
+	private static String USER = "admin";
 	private static final String DIRECCION =  "xmldb:exist://localhost:8080/exist/xmlrpc/db";
 	private static String urlBD;
 	
-	@SuppressWarnings("unused")
+	private static String coleccion;
+	private static String directorioXML;
+	private static String documentoQuery;
+	private static String numeroQuery;
+	
+	@SuppressWarnings({ "unused", "rawtypes" })
 	public static int main(String[] args) {
-		if((args.length!=4)||!(args[0].startsWith("/")))
-		{
-			System.out.println("Modo de uso:");
-			System.out.println("('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
-			return -1;
+		
+		switch (args.length){
+			case 4:{
+				coleccion = args[0];
+				directorioXML = args[1];
+				documentoQuery =args[2];
+				numeroQuery = args[3];
+				break;}
+						
+			case 6:{
+				USER = args[0];
+				PASSWORD = args[1];
+				coleccion = args[2];
+				directorioXML = args[3];
+				documentoQuery =args[4];
+				numeroQuery = args[5];
+				break;}
+		
+			default:{
+				System.out.println("Modo de uso en Laboratorio");
+				System.out.println("('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
+				System.out.println("Modo de uso en casa");
+				System.out.println("(usurio)(contraseña)('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
+				return -1;}
 		}
-		String coleccion = args[0];
-		String directorioXML = args[1];
-		String documentoQuery = args[2];
-		String numeroQuery = args[3];
 		
 		//Eliminar "/db" si es especificado en la entrada
 		if (coleccion.startsWith("/db")) {
@@ -37,15 +57,12 @@ public class Main {
 		}
 		String urlBD1 = DIRECCION + coleccion;
 		
-		// Se inicializa el driver
 		String driver = "org.exist.xmldb.DatabaseImpl";
-		//Cargar el driver
-		@SuppressWarnings("rawtypes")
 		Class cl;
 		Database database;
+		Collection col;
 		try {
 			cl = Class.forName(driver);
-			
 			//Instancia de la BD
 			database = (Database) cl.newInstance();
 			database.setProperty("create-database", "true");
@@ -54,9 +71,7 @@ public class Main {
 			DatabaseManager.registerDatabase(database);
 			
 			// Se intenta acceder a la coleccion especificada como primer argumento
-			Collection col = DatabaseManager.getCollection( urlBD, USER, PASSWORD);
-			XPathQueryService service =	(XPathQueryService) col.getService("XPathQueryService", "1.0");
-			
+			col = DatabaseManager.getCollection(urlBD, USER, PASSWORD);
 			if (col == null) {
 				Collection root = DatabaseManager.getCollection(  DIRECCION ,USER, PASSWORD);
 				CollectionManagementService mgtService =
@@ -64,7 +79,48 @@ public class Main {
 				col = mgtService.createCollection(coleccion);
 			}
 			
-			enviarXML(col, directorioXML);
+			//FIXME
+			XPathQueryService service =	(XPathQueryService) col.getService("XPathQueryService", "1.0");
+			
+			cargarXMLs(col, directorioXML);
+			
+			cargarXQuery(col,documentoQuery);
+		
+			String miQuery = obtenerQuery(numeroQuery,documentoQuery);
+			
+			ResourceSet result = service.query(miQuery);
+			ResourceIterator i = result.getIterator();
+			while (i.hasMoreResources()) {
+				Resource r = i.nextResource();
+				System.out.println((String) r.getContent());
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		return 0;
+
+	}
+
+	private static String obtenerQuery(String numeroQuery2,	String documentoQuery2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static void cargarXQuery(Collection col, String documentoQuery2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private static void cargarXMLs(Collection col, String directorioXML2) {
+		// TODO Auto-generated method stub
+		
+	}
+		
+/*
 			
 			
 		} catch (Exception e) {
@@ -101,5 +157,7 @@ public class Main {
 			//System.out.println("Almacenado correctamente");
 		}
 	}
+	
+	*/
 }
 
