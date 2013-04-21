@@ -5,7 +5,10 @@ package main;
  *
  */
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+
 import org.xmldb.api.*;
 import org.xmldb.api.base.*;
 import org.xmldb.api.modules.*;
@@ -13,17 +16,16 @@ import org.xmldb.api.modules.*;
 
 public class Main {
 
-	private static String PASSWORD = "XMLFdILABs"; //TODO user y pass
+	private static String PASSWORD = "XMLFdILABs";
 	private static String USER = "admin";
 	private static final String DIRECCION =  "xmldb:exist://localhost:8080/exist/xmlrpc/db";
-	private static String urlBD;
 	
 	private static String coleccion;
 	private static String directorioXML;
 	private static String documentoQuery;
 	private static String numeroQuery;
 	
-	@SuppressWarnings({ "unused", "rawtypes" })
+	@SuppressWarnings({ "rawtypes" })
 	public static void main(String[] args) {
 		
 		switch (args.length){
@@ -48,7 +50,6 @@ public class Main {
 				System.out.println("('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
 				System.out.println("Modo de uso en casa");
 				System.out.println("(usurio)(contraseña)('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
-				//return -1;
 				}
 		}
 		
@@ -86,7 +87,7 @@ public class Main {
 			cargarXMLs(col, directorioXML);
 			
 		
-			String miQuery = obtenerQuery(numeroQuery,documentoQuery);
+			String miQuery = obtenerQuery(Integer.valueOf(numeroQuery),documentoQuery);
 			
 			ResourceSet result = service.query(miQuery);
 			ResourceIterator i = result.getIterator();
@@ -96,18 +97,29 @@ public class Main {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-
-		//return 0;
 
 	}
 
-	private static String obtenerQuery(String numeroQuery2,	String documentoQuery2) {
-		// TODO Auto-generated method stub
-		return null;
+	@SuppressWarnings("resource")
+	private static String obtenerQuery(int numeroQuery,	String documentoQuery) {
+		File arch = new File(documentoQuery);
+		FileReader fr;
+		BufferedReader bufr;
+		String retorno = "";
+		try {
+			fr = new FileReader(arch);
+			bufr = new BufferedReader(fr);
+			for(int i=0;i<numeroQuery;i++)
+			{
+				retorno = bufr.readLine();
+			}
+			return retorno;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		}
 	}
 
 	private static void cargarXMLs(Collection col, String directorioXML) {		
@@ -129,7 +141,7 @@ public class Main {
 					//System.out.println("Almacenado correctamente");
 				}
 			}
-			System.out.println("putapita");
+			System.out.println("putapita"); //TODO borrar esto xD
 		}catch(Exception e){
 			
 		}
