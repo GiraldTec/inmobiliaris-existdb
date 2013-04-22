@@ -1,3 +1,8 @@
-for $b in doc('agencias.xml')//Inmobiliarias/Inmobiliaria where $b/provincia = "Madrid" order by $b/nombre return $b/nombre
+for $b in doc('agencias.xml')//Inmobiliarias/Inmobiliaria where $b/provincia = "Madrid" order by $b/nombre return <nombre>{$b/nombre}</nombre><anuncios>{count(for $c in doc('inmuebles.xml')//inmuebles/anunciowhere $c/@agencia == $b/@id return $c/@id)}</anuncios>
 for $b in doc('inmuebles.xml')//inmuebles/anuncio where $b/inmueble/@tipo == "piso" AND $b/opcionales/numHabitaciones >= 2 order by $b/@id return  <inmueble><localizacion>{$b/inmueble/localidad}</localizacion> <superficie>{$b/inmueble/metros2}</superficie> <precio>{$b/inmueble/precio}</precio> <estado>{$b/inmueble/@estado}</estado> <agencia>{$b/@agencia}</agencia> <calefaccion>{if (not(exists($b/opcionales/calefaccion))) then "no" else  $b/opcionales/calefaccion}</calefaccion></inmueble>
 for $b in doc('inmuebles.xml')//inmuebles/anuncio where $b/inmueble/@tipo == "casa" AND $b/inmueble/cp == 28210 AND $b/inmueble/precio < 500000 order by $b/inmueble/precio group $b as $bb by $b/@agencia as $z return  $bb/id
+
+
+
+
+
