@@ -1,1 +1,1 @@
-for $b in doc("prueba/agencias.xml")//Inmobiliarias/Inmobiliaria where $b/provincia = "Madrid" order by $b/nombre return $b/nombre
+for $b in doc('agencias.xml')//Inmobiliarias/Inmobiliaria where $b/provincia = "Madrid" order by $b/nombre return $b/nombre

@@ -80,17 +80,18 @@ public class Main {
 				(CollectionManagementService) root.getService("CollectionManagementService","1.0");
 				col = mgtService.createCollection(coleccion);
 			}
-			
-			//FIXME
-			XPathQueryService service =	(XPathQueryService) col.getService("XPathQueryService", "1.0");
-			
+						
 			cargarXMLs(col, directorioXML);
-			
-		
+					
 			String miQuery = obtenerQuery(Integer.valueOf(numeroQuery),documentoQuery);
+			System.out.println(miQuery);
+			XPathQueryService service = (XPathQueryService)	col.getService("XPathQueryService", "1.0");
+			service.setProperty("pretty", "true");
+			service.setProperty("encoding", "ISO-8859-1");
 			
 			ResourceSet result = service.query(miQuery);
 			ResourceIterator i = result.getIterator();
+			
 			while (i.hasMoreResources()) {
 				Resource r = i.nextResource();
 				System.out.println((String) r.getContent());
@@ -102,7 +103,6 @@ public class Main {
 
 	}
 
-	@SuppressWarnings("resource")
 	private static String obtenerQuery(int numeroQuery,	String documentoQuery) {
 		File arch = new File(documentoQuery);
 		FileReader fr;
@@ -113,15 +113,15 @@ public class Main {
 			bufr = new BufferedReader(fr);
 			Integer contador = 0;
 			while((contador<numeroQuery)&&(linea=bufr.readLine())!=null){
-				System.out.println(linea);
 				contador++;
 			}
+			//System.out.println(linea);
 			fr.close();
-			return linea;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "";
 		}
+		return linea;
 	}
 
 	private static void cargarXMLs(Collection col, String directorioXML) {		
