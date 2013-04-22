@@ -7,6 +7,8 @@
             <metros2>120</metros2>
            	<provincia>Asturias</provincia>
            	<localidad>Pepinosa</localidad>
+			<precio>120000</precio>
+			<cp>25000</cp>
         </inmueble>
         
         <opcionales>
@@ -25,6 +27,46 @@
             <metros2>90</metros2>
            	<provincia>Huesca</provincia>
            	<localidad>Hortalizada</localidad>
+			<precio>700</precio>
+			<cp>25000</cp>
+        </inmueble>
+        
+        <opcionales>
+        	<calefaccion>si</calefaccion>
+            <numHabs>2</numHabs>
+            <baños>1</baños>
+        </opcionales>
+        <fotos>
+            <foto>www.wakawaka.es/foto68.jpg</foto>
+        </fotos>
+    </anuncio>
+	
+	<anuncio id="casa_01" agencia="pitufo" operacion="venta">
+        <inmueble tipo="casa" estado="nuevo">
+            <metros2>150</metros2>
+           	<provincia>Madrid</provincia>
+           	<localidad>Valdemorillo</localidad>
+			<precio>350000</precio>
+			<cp>28210</cp>
+        </inmueble>
+        
+        <opcionales>
+        	<calefaccion>si</calefaccion>
+            <numHabs>2</numHabs>
+            <baños>1</baños>
+        </opcionales>
+        <fotos>
+            <foto>www.wakawaka.es/foto68.jpg</foto>
+        </fotos>
+    </anuncio>
+	
+	<anuncio id="casa_02" agencia="pitufo" operacion="venta">
+        <inmueble tipo="casa" estado="nuevo">
+            <metros2>250</metros2>
+           	<provincia>Madrid</provincia>
+           	<localidad>Valdemorillo</localidad>
+			<precio>520000</precio>
+			<cp>28210</cp>
         </inmueble>
         
         <opcionales>
@@ -42,6 +84,8 @@
             <metros2>1000</metros2>
            	<provincia>Alicante</provincia>
            	<localidad>Tomatera</localidad>
+			<precio>500</precio>
+			<cp>25000</cp>
         </inmueble>
         <opcionales>
         </opcionales>
@@ -54,6 +98,8 @@
             <metros2>600</metros2>
            	<provincia>Segovia</provincia>
            	<localidad>Burgohondo</localidad>
+			<precio>400</precio>
+			<cp>25000</cp>
         </inmueble>
         <opcionales>
             <calefaccion>si</calefaccion>
