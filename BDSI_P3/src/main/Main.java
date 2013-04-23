@@ -27,7 +27,7 @@ public class Main {
 	
 	@SuppressWarnings({ "rawtypes" })
 	public static void main(String[] args) {
-		
+	try{
 		switch (args.length){
 			case 4:{
 				coleccion = args[0];
@@ -46,13 +46,15 @@ public class Main {
 				break;}
 		
 			default:{
-				System.out.println("Modo de uso en Laboratorio");
-				System.out.println("('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
-				System.out.println("Modo de uso en casa");
-				System.out.println("(usurio)(contraseña)('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
+				System.err.println("Modo de uso en Laboratorio");
+				System.err.println("('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
+				System.err.println("Modo de uso en casa");
+				System.err.println("(usuario)(contraseña)('/'+coleccion)(directorio XML)(documentoXQUERY)(1<=Nº Query<=3)");
 				}
 		}
 		
+		if (new Integer(numeroQuery)>3)
+			throw new Exception();
 		//Eliminar "/db" si es especificado en la entrada
 		if (coleccion.startsWith("/db")) {
 			coleccion = coleccion.substring(3);
@@ -100,7 +102,12 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+	}catch(Exception e){
+		System.err.println("Modo de uso en Laboratorio");
+		System.err.println("('/'+coleccion)(directorio XML)(documentoXQUERY)(Nº Query)");
+		System.err.println("Modo de uso en casa");
+		System.err.println("(usuario)(contraseña)('/'+coleccion)(directorio XML)(documentoXQUERY)(1<=Nº Query<=3)");
+	}
 	}
 
 	private static String obtenerQuery(int numeroQuery,	String documentoQuery) {
@@ -143,10 +150,7 @@ public class Main {
 					//System.out.println("Almacenado correctamente");
 				}
 			}
-		}catch(Exception e){
-			
-		}
-		
+		}catch(Exception e){}
 	}
 		
 }
